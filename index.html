@@ -1,7 +1,252 @@
-&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-&lt;meta charset="UTF-8"&gt;
-&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-&lt;meta name="description" content="AI Reven — AI automation, AI agents, lead generation, WhatsApp automation and custom AI solutions."&gt;
-&lt;title&gt;AI Reven — AI Automation Agency&lt;/title&gt;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AI Reven — AI automation, AI agents, lead generation, WhatsApp automation and custom AI solutions.">
+<title>AI Reven — AI Automation Agency</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<style>
+:root{--bg:#050507;--card:#111113;--card2:#15141a;--purple:#5435ff;--purple2:#754dff;--pink:#ff0a68;--white:#f7f7f9;--muted:#96969d;--line:#25252a;--max:1160px}
+*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--white);font-family:Inter,sans-serif;overflow-x:hidden}
+a{text-decoration:none;color:inherit}button{font:inherit}
+.container{width:min(var(--max),calc(100% - 40px));margin:auto}
+.section{padding:105px 0;position:relative}
+.section-title{text-align:center;max-width:760px;margin:0 auto 52px}
+.kicker{color:#633dff;text-transform:uppercase;letter-spacing:2px;font-weight:700;font-size:15px;margin-bottom:20px}
+h1,h2,h3,h4{font-family:"Space Grotesk",sans-serif}
+h2{font-size:clamp(35px,5vw,57px);line-height:1.1}
+.section-title p{color:var(--muted);font-size:18px;line-height:1.75;margin-top:24px}
+header{position:fixed;z-index:99;top:0;left:0;right:0;background:rgba(7,7,9,.88);backdrop-filter:blur(15px);border-bottom:1px solid transparent}
+header.scrolled{border-color:var(--line)}
+.nav{height:86px;display:flex;align-items:center;justify-content:space-between}
+.brand{display:flex;align-items:center;gap:12px;font:700 29px "Space Grotesk";letter-spacing:-1px}
+.brand-mark{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(145deg,#5836ff,#8d54ff);font-size:20px}
+.brand span{color:#fff}
+.menu{display:flex;gap:28px;list-style:none}.menu a{font-size:14px;color:#bbb;transition:.2s}.menu a:hover{color:#fff}
+.nav-right{display:flex;gap:9px;align-items:center}.social{width:37px;height:37px;border:1px solid #29292e;border-radius:50%;display:grid;place-items:center;color:#aaa;font-size:13px}.hamb{display:none;background:none;border:0;color:#633dff;font-size:27px}
+.hero{padding:160px 0 90px;min-height:760px;background:
+radial-gradient(circle at 12% 35%,rgba(81,46,255,.23),transparent 30%),
+radial-gradient(circle at 92% 28%,rgba(255,0,91,.18),transparent 25%)}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.hero .kicker{text-align:left}
+h1{font-size:clamp(52px,7vw,86px);line-height:.99;letter-spacing:-4px}
+.hero h1 span{background:linear-gradient(100deg,#fff 15%,#8166ff 60%,#ff2679);-webkit-background-clip:text;color:transparent}
+.hero-copy{font-size:18px;color:#aaaab1;max-width:650px;margin:28px 0 33px;line-height:1.8}
+.buttons{display:flex;gap:13px;flex-wrap:wrap}.btn{display:inline-flex;align-items:center;gap:12px;padding:15px 23px;border-radius:35px;border:1px solid #29292e;font-weight:700;transition:.25s}.btn:hover{transform:translateY(-3px)}.primary{background:linear-gradient(100deg,#5132ff,#7248ff);border:0}
+.hero-art{min-height:450px;border-radius:35px;background:linear-gradient(145deg,#111116,#0b0b0e);border:1px solid #27232f;position:relative;overflow:hidden;display:grid;place-items:center;box-shadow:0 40px 120px rgba(70,35,255,.12)}
+.hero-art:before{content:"";position:absolute;width:310px;height:310px;border-radius:50%;background:radial-gradient(circle,#6e46ff,transparent 65%);filter:blur(10px);opacity:.55}
+.brain{position:relative;width:145px;height:145px;border-radius:35px;transform:rotate(8deg);background:linear-gradient(135deg,#5435ff,#9a55ff);display:grid;place-items:center;font-size:60px;box-shadow:0 0 90px rgba(94,54,255,.5)}
+.hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:35px;z-index:1}
+.brand-placeholder{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;color:#666;font-size:13px;padding:20px;z-index:1}
+.brand-placeholder i{font-size:38px;color:#4b3d8a}
+.brand-placeholder code{color:#9a86ff;font-size:12px;background:#0000004d;padding:3px 8px;border-radius:6px}
+/* project view modal */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(5,5,7,.86);backdrop-filter:blur(6px);z-index:200;align-items:center;justify-content:center;padding:20px}
+.modal-overlay.active{display:flex}
+.modal-box{position:relative;max-width:640px;width:100%;max-height:88vh;overflow:auto;background:linear-gradient(145deg,#111113,#0d0d10);border:1px solid var(--line);border-radius:24px}
+.modal-visual-wrap .project-visual{border-radius:24px 24px 0 0;height:260px}
+.modal-close{position:absolute;top:16px;right:16px;width:38px;height:38px;border-radius:50%;background:#0b0b0ee0;border:1px solid #302c3b;color:#fff;display:grid;place-items:center;cursor:pointer;font-size:16px;z-index:5}
+.modal-body{padding:30px}
+.modal-title{font-size:26px;margin-bottom:12px}
+.modal-desc{color:#96969d;line-height:1.8;margin-bottom:18px}
+.floating{position:absolute;padding:11px 15px;border:1px solid #302c3b;background:#111116e8;border-radius:12px;font-size:12px;color:#ddd}.a{top:35px;left:25px}.b{top:105px;right:20px}.c{bottom:50px;left:30px}.d{bottom:28px;right:30px}
+.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:65px}.trust div{border:1px solid var(--line);border-radius:15px;padding:20px;text-align:center;background:#0d0d10}.trust strong{display:block;font:700 27px "Space Grotesk"}.trust small{color:#777;font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{border:1px solid var(--line);background:linear-gradient(145deg,#111113,#0d0d10);border-radius:23px;padding:29px;transition:.25s}.card:hover{border-color:#4634a8;transform:translateY(-5px)}
+.service-icon{width:55px;height:55px;border-radius:15px;display:grid;place-items:center;background:rgba(83,52,255,.12);color:#795fff;font-size:22px;margin-bottom:22px}.card h3{font-size:21px;margin-bottom:10px}.card p{color:#8e8e96;font-size:14px;line-height:1.75}
+.about{background:linear-gradient(180deg,#050507,#08070d,#050507)}.about-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:70px;align-items:center}.about-grid>div:first-child h2{text-align:left}.about-copy{color:#96969d;line-height:1.9;margin-top:22px}
+.about-list{display:grid;grid-template-columns:1fr 1fr;gap:13px}.about-box{border:1px solid var(--line);background:#101013;padding:21px;border-radius:16px}.about-box i{color:#7557ff;margin-right:8px}.about-box b{font-size:14px}
+.portfolio-section{background:linear-gradient(180deg,#08070d,#0b0714,#050507)}
+.filters{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;margin-bottom:55px}.filter{border:0;background:#111113;color:#ddd;padding:12px 25px;border-radius:30px;font-weight:700;cursor:pointer}.filter.active{background:linear-gradient(100deg,#5132ff,#7248ff)}
+.portfolio{display:grid;grid-template-columns:1fr 1fr;gap:20px}.project{border:1px solid var(--line);border-radius:28px;overflow:hidden;background:#111113;transition:.25s}.project:hover{transform:translateY(-5px);border-color:#4d36bf}.project-visual{height:340px;position:relative;display:grid;place-items:center;background:radial-gradient(circle at 80% 20%,rgba(255,10,104,.23),transparent 35%),linear-gradient(145deg,#18122c,#0d0d12)}.project-visual.alt{background:radial-gradient(circle at 20% 20%,rgba(80,50,255,.35),transparent 35%),linear-gradient(145deg,#10182b,#0d0d12)}.mock{width:78%;height:73%;border-radius:13px;border:1px solid #3c3551;background:#0b0b0f;box-shadow:0 20px 50px #0009;overflow:hidden;padding:15px}.mock-top{height:9px;width:45%;border-radius:20px;background:#4d35ff;margin-bottom:20px}.mock-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.mock-box{height:65px;border-radius:8px;background:linear-gradient(135deg,#171721,#271d48)}.mock-box.big{grid-column:span 2;height:100px}.project-body{padding:25px}.project-body h3{font-size:26px}.tags{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 21px}.tag{border:1px solid #29292e;color:#999;padding:6px 12px;border-radius:30px;font-size:11px}.project-body .btn{padding:11px 18px;font-size:13px}
+.process{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.step{padding:24px;border:1px solid var(--line);border-radius:17px;background:#0e0e11}.num{color:#6544ff;font-weight:700}.step h3{margin:12px 0 8px}.step p{color:#85858c;font-size:13px}
+.pricing{grid-template-columns:repeat(3,1fr)}.price{font:700 40px "Space Grotesk";margin:16px 0}.price small{font:400 12px;color:#777}.featured{border-color:#593eff;box-shadow:0 25px 70px rgba(81,50,255,.12)}.features{list-style:none;margin:25px 0}.features li{color:#999;margin:11px 0;font-size:13px}.features i{color:#775aff;margin-right:8px}
+.faq{max-width:850px;margin:auto}.faq details{border-bottom:1px solid var(--line);padding:22px 0}.faq summary{cursor:pointer;font-weight:700;font-family:"Space Grotesk";font-size:17px}.faq p{color:#888;margin-top:12px;font-size:14px;line-height:1.8}
+.contact{background:linear-gradient(145deg,#110c22,#08070b);border:1px solid #29222f;border-radius:30px;padding:45px;display:grid;grid-template-columns:.85fr 1.15fr;gap:45px}.contact h2{text-align:left}.contact>div>p{color:#888;margin:20px 0}.contact-item{display:flex;gap:13px;margin:18px 0;color:#ccc}.contact-item i{color:#7254ff;width:20px;text-align:center}.contact small{display:block;color:#666}.form{display:grid;gap:13px}.form input,.form textarea{width:100%;border:1px solid #29292e;background:#0b0b0e;border-radius:12px;padding:15px;color:#fff;outline:none}.form textarea{min-height:140px;resize:vertical}
+footer{border-top:1px solid var(--line);padding:35px 0;color:#666;font-size:13px}.foot{display:flex;justify-content:space-between;align-items:center}.foot-links{display:flex;gap:18px}
+#top{display:none;position:fixed;right:20px;bottom:20px;width:48px;height:48px;border-radius:50%;background:#5435ff;color:#fff;place-items:center;z-index:90;box-shadow:0 10px 30px #3b24b855}
+.chat{position:fixed;right:20px;bottom:80px;width:55px;height:55px;border-radius:50%;background:#5435ff;display:grid;place-items:center;z-index:90;font-size:23px;box-shadow:0 10px 30px #3b24b855}
+@media(max-width:900px){.menu{display:none}.nav-right .social{display:none}.hamb{display:block}.hero-grid,.about-grid,.contact{grid-template-columns:1fr}.hero-art{min-height:370px}.cards,.pricing{grid-template-columns:1fr 1fr}.portfolio{grid-template-columns:1fr}.process{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.container{width:calc(100% - 28px)}.section{padding:75px 0}.nav{height:75px}.brand{font-size:26px}.hero{padding-top:125px}.hero h1{font-size:52px;letter-spacing:-2.5px}.hero-art{min-height:310px}.trust{grid-template-columns:1fr 1fr}.cards,.pricing,.process,.about-list{grid-template-columns:1fr}.portfolio .project-visual{height:275px}.contact{padding:27px}.section-title{margin-bottom:38px}}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container nav">
+    <a class="brand" href="#home"><span class="brand-mark"><i class="fa-solid fa-link"></i></span>AI Reven</a>
+    <ul class="menu">
+      <li><a href="#home">Home</a></li><li><a href="#about">About</a></li><li><a href="#services">Services</a></li>
+      <li><a href="#portfolio">Portfolio</a></li><li><a href="#process">Process</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#faq">FAQ</a></li><li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-right">
+      <a class="social" href="#"><i class="fa-brands fa-instagram"></i></a>
+      <a class="social" href="#"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a class="social" href="#"><i class="fa-brands fa-facebook-f"></i></a>
+      <button class="hamb" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+ <div class="container">
+  <div class="hero-grid">
+   <div>
+    <div class="kicker">AI Automation Agency</div>
+    <h1>Transforming work with <span>intelligent automation.</span></h1>
+    <p class="hero-copy">AI Reven designs AI agents, business workflows, lead-generation systems and custom AI solutions that help businesses save time, respond faster and scale smarter.</p>
+    <div class="buttons"><a class="btn primary" href="#contact">Let's Build Together <i class="fa-solid fa-arrow-right"></i></a><a class="btn" href="#portfolio">View Portfolio</a></div>
+   </div>
+   <div class="hero-art">
+    <img src="assets/images/brand-banner.jpg" alt="AI Reven brand banner" id="brandImg" onerror="this.style.display='none';document.getElementById('brandPlaceholder').style.display='flex'">
+    <div class="brand-placeholder" id="brandPlaceholder"><i class="fa-solid fa-image"></i><span>Upload your brand image to<br><code>assets/images/brand-banner.jpg</code></span></div>
+    <span class="floating a">AI Agents</span><span class="floating b">n8n Workflows</span><span class="floating c">Lead Generation</span><span class="floating d">WhatsApp AI</span>
+   </div>
+  </div>
+  <div class="trust"><div><strong>AI</strong><small>Powered Systems</small></div><div><strong>24/7</strong><small>Automation</small></div><div><strong>API</strong><small>Integrations</small></div><div><strong>ROI</strong><small>Focused Builds</small></div></div>
+ </div>
+</section>
+
+<section class="section" id="about">
+ <div class="container about-grid">
+  <div><div class="kicker">ABOUT AI REVEN</div><h2>We automate the work that slows you down.</h2><p class="about-copy">AI Reven helps businesses turn repetitive tasks into intelligent, connected systems. We combine AI, automation and integrations to build workflows around the way your business actually operates.</p><a class="btn primary" href="#contact" style="margin-top:25px">Talk About Your Business <i class="fa-solid fa-arrow-right"></i></a></div>
+  <div class="about-list">
+   <div class="about-box"><i class="fa-solid fa-circle-check"></i><b>Less manual work</b></div><div class="about-box"><i class="fa-solid fa-circle-check"></i><b>Faster response times</b></div>
+   <div class="about-box"><i class="fa-solid fa-circle-check"></i><b>Connected business tools</b></div><div class="about-box"><i class="fa-solid fa-circle-check"></i><b>Custom AI agents</b></div>
+   <div class="about-box"><i class="fa-solid fa-circle-check"></i><b>Scalable workflows</b></div><div class="about-box"><i class="fa-solid fa-circle-check"></i><b>Data-driven automation</b></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="services">
+ <div class="container">
+  <div class="section-title"><div class="kicker">WHAT WE DO</div><h2>Powerful AI services for modern businesses.</h2><p>From one simple workflow to a complete AI-powered operation, choose the solution that fits your business.</p></div>
+  <div class="cards">
+   <article class="card"><div class="service-icon"><i class="fa-solid fa-robot"></i></div><h3>AI Automation</h3><p>Business workflow automation, n8n workflows, API/webhook connections and CRM automation.</p></article>
+   <article class="card"><div class="service-icon"><i class="fa-solid fa-user-astronaut"></i></div><h3>Custom AI Agents</h3><p>Customer support, sales, qualification and business-specific AI agents with clear actions.</p></article>
+   <article class="card"><div class="service-icon"><i class="fa-brands fa-whatsapp"></i></div><h3>WhatsApp Automation</h3><p>AI chatbots, automated replies, follow-ups, order flows and human handoff.</p></article>
+   <article class="card"><div class="service-icon"><i class="fa-brands fa-instagram"></i></div><h3>Facebook & Instagram</h3><p>Messenger AI, Instagram DM automation, comment-to-DM flows and social workflows.</p></article>
+   <article class="card"><div class="service-icon"><i class="fa-solid fa-magnet"></i></div><h3>Lead Generation</h3><p>Business lead discovery, enrichment, scoring and automated lead pipelines.</p></article>
+   <article class="card"><div class="service-icon"><i class="fa-solid fa-envelope"></i></div><h3>Email & Outreach</h3><p>Personalized emails, automated follow-ups, reply classification and hot-lead alerts.</p></article>
+   <article class="card"><div class="service-icon"><i class="fa-solid fa-cart-shopping"></i></div><h3>E-commerce Automation</h3><p>Order automation, abandoned-order recovery, customer follow-up and store integrations.</p></article>
+   <article class="card"><div class="service-icon"><i class="fa-solid fa-window-maximize"></i></div><h3>Custom AI SaaS</h3><p>AI web apps, internal tools, dashboards and subscription-based AI products.</p></article>
+   <article class="card"><div class="service-icon"><i class="fa-solid fa-code-branch"></i></div><h3>API & Integrations</h3><p>OpenAI, Meta, WhatsApp, Gmail, Google Sheets, Telegram, CRM, WooCommerce and REST APIs.</p></article>
+  </div>
+ </div>
+</section>
+
+<section class="section portfolio-section" id="portfolio">
+ <div class="container">
+  <div class="section-title"><div class="kicker">LATEST PORTFOLIO</div><h2>Transforming ideas into exceptional AI systems.</h2><p>Sample portfolio projects are shown below. Replace these with your real projects, screenshots and case studies later.</p></div>
+  <div class="filters"><button class="filter active" data-filter="all">All</button><button class="filter" data-filter="automation">Automation</button><button class="filter" data-filter="agents">AI Agents</button><button class="filter" data-filter="lead">Lead Generation</button><button class="filter" data-filter="saas">AI SaaS</button></div>
+  <div class="portfolio">
+   <article class="project" id="proj1" data-cat="agents automation"><div class="project-visual"><div class="mock"><div class="mock-top"></div><div class="mock-grid"><div class="mock-box big"></div><div class="mock-box"></div><div class="mock-box"></div><div class="mock-box"></div><div class="mock-box"></div></div></div></div><div class="project-body"><h3>AI WhatsApp Sales Assistant</h3><p class="about-copy">AI-powered customer conversations, qualification and automated follow-up.</p><div class="tags"><span class="tag">AI Agent</span><span class="tag">WhatsApp</span><span class="tag">CRM</span></div><button class="btn" onclick="openProject('proj1')">View Design <i class="fa-solid fa-arrow-right"></i></button></div></article>
+   <article class="project" id="proj2" data-cat="lead automation"><div class="project-visual alt"><div class="mock"><div class="mock-top"></div><div class="mock-grid"><div class="mock-box"></div><div class="mock-box"></div><div class="mock-box big"></div><div class="mock-box"></div><div class="mock-box"></div></div></div></div><div class="project-body"><h3>Automated Lead Pipeline</h3><p class="about-copy">Lead collection, enrichment, scoring and notification workflow.</p><div class="tags"><span class="tag">n8n</span><span class="tag">Lead Gen</span><span class="tag">API</span></div><button class="btn" onclick="openProject('proj2')">View Design <i class="fa-solid fa-arrow-right"></i></button></div></article>
+   <article class="project" id="proj3" data-cat="saas agents"><div class="project-visual alt"><div class="mock"><div class="mock-top"></div><div class="mock-grid"><div class="mock-box big"></div><div class="mock-box"></div><div class="mock-box"></div></div></div></div><div class="project-body"><h3>AI Business Dashboard</h3><p class="about-copy">Centralized dashboard for automation activity, leads and business metrics.</p><div class="tags"><span class="tag">AI SaaS</span><span class="tag">Dashboard</span><span class="tag">Analytics</span></div><button class="btn" onclick="openProject('proj3')">View Design <i class="fa-solid fa-arrow-right"></i></button></div></article>
+   <article class="project" id="proj4" data-cat="automation"><div class="project-visual"><div class="mock"><div class="mock-top"></div><div class="mock-grid"><div class="mock-box"></div><div class="mock-box big"></div><div class="mock-box"></div><div class="mock-box"></div></div></div></div><div class="project-body"><h3>E-commerce Automation Flow</h3><p class="about-copy">Order events, customer notifications and recovery workflows connected together.</p><div class="tags"><span class="tag">E-commerce</span><span class="tag">Automation</span><span class="tag">Webhook</span></div><button class="btn" onclick="openProject('proj4')">View Design <i class="fa-solid fa-arrow-right"></i></button></div></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="process">
+ <div class="container">
+  <div class="section-title"><div class="kicker">OUR PROCESS</div><h2>From problem to production.</h2><p>A simple process keeps your automation useful, reliable and aligned with your goals.</p></div>
+  <div class="process">
+   <div class="step"><span class="num">01</span><h3>Discover</h3><p>Understand your goals, tools and repetitive tasks.</p></div>
+   <div class="step"><span class="num">02</span><h3>Design</h3><p>Map the workflow, logic and integrations.</p></div>
+   <div class="step"><span class="num">03</span><h3>Build</h3><p>Develop the AI agent or automation system.</p></div>
+   <div class="step"><span class="num">04</span><h3>Launch</h3><p>Test, connect and deploy the workflow.</p></div>
+   <div class="step"><span class="num">05</span><h3>Optimize</h3><p>Monitor results and improve over time.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="pricing">
+ <div class="container">
+  <div class="section-title"><div class="kicker">PRICING</div><h2>Start small. Scale when you're ready.</h2><p>These are editable sample prices. Replace them with your actual packages later.</p></div>
+  <div class="cards pricing">
+   <article class="card"><h3>Starter</h3><div class="price">$299 <small>/ project</small></div><p>For one focused automation.</p><ul class="features"><li><i class="fa-solid fa-check"></i>1 workflow</li><li><i class="fa-solid fa-check"></i>Basic integration</li><li><i class="fa-solid fa-check"></i>Setup & testing</li><li><i class="fa-solid fa-check"></i>Documentation</li></ul><a href="#contact" class="btn">Get Started</a></article>
+   <article class="card featured"><h3>Growth</h3><div class="price">$799 <small>/ project</small></div><p>For connected business automation.</p><ul class="features"><li><i class="fa-solid fa-check"></i>Multiple workflows</li><li><i class="fa-solid fa-check"></i>AI agent integration</li><li><i class="fa-solid fa-check"></i>CRM & messaging</li><li><i class="fa-solid fa-check"></i>Priority support</li></ul><a href="#contact" class="btn primary">Choose Growth</a></article>
+   <article class="card"><h3>Custom</h3><div class="price">Let's Talk</div><p>For advanced AI systems and SaaS.</p><ul class="features"><li><i class="fa-solid fa-check"></i>Custom architecture</li><li><i class="fa-solid fa-check"></i>Advanced agents</li><li><i class="fa-solid fa-check"></i>Custom dashboard/SaaS</li><li><i class="fa-solid fa-check"></i>Ongoing optimization</li></ul><a href="#contact" class="btn">Request Quote</a></article>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="faq">
+ <div class="container">
+  <div class="section-title"><div class="kicker">FAQ</div><h2>Everything you need to know.</h2></div>
+  <div class="faq">
+   <details open><summary>What can AI Reven automate?</summary><p>Customer support, lead handling, WhatsApp and social conversations, email follow-up, e-commerce operations, internal workflows and many other repetitive processes.</p></details>
+   <details><summary>Can you connect the tools I already use?</summary><p>Yes. We can work with APIs, webhooks and common business platforms after reviewing your existing setup.</p></details>
+   <details><summary>Can AI hand a conversation to a human?</summary><p>Yes. Human handoff can be triggered by business rules, customer requests or situations where the AI should not continue alone.</p></details>
+   <details><summary>Do you build custom AI software?</summary><p>Yes. Custom AI web apps, internal tools, dashboards and SaaS-style products can be scoped as dedicated projects.</p></details>
+  </div>
+ </div>
+</section>
+
+<section class="section" id="contact">
+ <div class="container">
+  <div class="contact">
+   <div><div class="kicker">CONTACT AI REVEN</div><h2>Have an idea? Let's automate it.</h2><p>Replace the placeholder details below with your real email, WhatsApp number, location and social profiles.</p>
+    <div class="contact-item"><i class="fa-solid fa-envelope"></i><div><small>Email</small>your@email.com</div></div>
+    <div class="contact-item"><i class="fa-brands fa-whatsapp"></i><div><small>WhatsApp</small>+000 000 0000</div></div>
+    <div class="contact-item"><i class="fa-solid fa-location-dot"></i><div><small>Location</small>Your City, Your Country</div></div>
+   </div>
+   <form class="form" onsubmit="event.preventDefault();alert('Demo form — connect this to Formspree, your backend or email service later.');">
+    <input required placeholder="Your Name"><input required type="email" placeholder="Your Email"><input placeholder="Company / Business"><textarea required placeholder="What would you like to automate?"></textarea><button class="btn primary" type="submit">Send Inquiry <i class="fa-solid fa-paper-plane"></i></button>
+   </form>
+  </div>
+ </div>
+</section>
+</main>
+
+<div class="modal-overlay" id="projectModal">
+  <div class="modal-box">
+    <button class="modal-close" onclick="closeProject()"><i class="fa-solid fa-xmark"></i></button>
+    <div class="modal-visual-wrap"></div>
+    <div class="modal-body">
+      <h3 class="modal-title"></h3>
+      <p class="modal-desc"></p>
+      <div class="tags modal-tags"></div>
+      <a href="#contact" class="btn primary" onclick="closeProject()">Discuss This Project <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </div>
+</div>
+
+<footer><div class="container foot"><div>© <span id="year"></span> AI Reven. All rights reserved.</div><div class="foot-links"><a href="#about">About</a><a href="#services">Services</a><a href="#contact">Contact</a></div></div></footer>
+<a id="top" href="#home"><i class="fa-solid fa-arrow-up"></i></a><a class="chat" href="#contact" aria-label="Chat"><i class="fa-brands fa-whatsapp"></i></a>
+
+<script>
+const header=document.getElementById('header'),top=document.getElementById('top');
+window.addEventListener('scroll',()=>{header.classList.toggle('scrolled',scrollY>20);top.style.display=scrollY>450?'grid':'none'});
+document.getElementById('year').textContent=new Date().getFullYear();
+function toggleMenu(){const m=document.querySelector('.menu');if(getComputedStyle(m).display==='none')return;const open=m.style.display==='flex';m.style.display=open?'none':'flex';m.style.position='absolute';m.style.top='75px';m.style.left='14px';m.style.right='14px';m.style.padding='18px';m.style.background='#111113';m.style.border='1px solid #25252a';m.style.borderRadius='15px';m.style.flexDirection='column'}
+document.querySelectorAll('.filter').forEach(btn=>btn.addEventListener('click',()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));btn.classList.add('active');const f=btn.dataset.filter;document.querySelectorAll('.project').forEach(p=>p.style.display=(f==='all'||p.dataset.cat.includes(f))?'block':'none')}));
+
+function openProject(id){
+  const proj=document.getElementById(id);
+  const overlay=document.getElementById('projectModal');
+  const visual=proj.querySelector('.project-visual').cloneNode(true);
+  const visWrap=overlay.querySelector('.modal-visual-wrap');
+  visWrap.innerHTML='';visWrap.appendChild(visual);
+  overlay.querySelector('.modal-title').textContent=proj.querySelector('h3').textContent;
+  overlay.querySelector('.modal-desc').textContent=proj.querySelector('.project-body p').textContent;
+  overlay.querySelector('.modal-tags').innerHTML=proj.querySelector('.tags').innerHTML;
+  overlay.classList.add('active');
+  document.body.style.overflow='hidden';
+}
+function closeProject(){
+  document.getElementById('projectModal').classList.remove('active');
+  document.body.style.overflow='';
+}
+document.getElementById('projectModal').addEventListener('click',e=>{if(e.target.id==='projectModal')closeProject()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeProject()});
+</script>
+</body>
+</html>
