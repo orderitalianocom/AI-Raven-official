@@ -90,6 +90,11 @@ footer{border-top:1px solid var(--line);padding:35px 0;color:#666;font-size:13px
 .intro-scroll{position:absolute;bottom:35px;color:#777;font-size:13px;display:flex;flex-direction:column;align-items:center;gap:6px}
 .intro-scroll i{animation:bounce 1.6s infinite}
 @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(8px)}}
+.find-me{margin-top:38px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.find-me-label{font-family:"Space Grotesk",sans-serif;font-size:15px;color:#bdbdc4;font-weight:600;letter-spacing:.3px}
+.find-me-icons{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+.find-me-icons a{width:48px;height:48px;border-radius:50%;background:#111116;border:1px solid #29292e;display:grid;place-items:center;color:#ddd;font-size:18px;transition:.25s}
+.find-me-icons a:hover{background:linear-gradient(100deg,#5132ff,#7248ff);border-color:transparent;color:#fff;transform:translateY(-3px)}
 </style>
 </head>
 <body>
@@ -100,6 +105,15 @@ footer{border-top:1px solid var(--line);padding:35px 0;color:#666;font-size:13px
   </div>
   <h1 class="intro-name">Hi, I'm MD Rakib</h1>
   <div class="intro-typewriter" id="typewriterText"></div>
+  <div class="find-me">
+    <div class="find-me-label">Find me on</div>
+    <div class="find-me-icons">
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+      <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+      <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    </div>
+  </div>
   <div class="intro-scroll"><span>Scroll Down</span><i class="fa-solid fa-chevron-down"></i></div>
 </section>
 
