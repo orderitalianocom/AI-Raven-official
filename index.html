@@ -385,13 +385,17 @@ footer{border-top:1px solid var(--line);padding:35px 0;color:#666;font-size:13px
 <section class="section" id="contact">
  <div class="container">
   <div class="contact">
-   <div><div class="kicker">CONTACT ME</div><h2>Have an idea? Let's automate it.</h2><p>Replace the placeholder details below with your real email, WhatsApp number, location and social profiles.</p>
-    <div class="contact-item"><i class="fa-solid fa-envelope"></i><div><small>Email</small>your@email.com</div></div>
-    <div class="contact-item"><i class="fa-brands fa-whatsapp"></i><div><small>WhatsApp</small>+000 000 0000</div></div>
-    <div class="contact-item"><i class="fa-solid fa-location-dot"></i><div><small>Location</small>Your City, Your Country</div></div>
+   <div><div class="kicker">CONTACT ME</div><h2>Have an idea? Let's automate it.</h2><p>Send me a message and I'll get back to you as soon as possible.</p>
+    <div class="contact-item"><i class="fa-solid fa-envelope"></i><div><small>Email</small>rakibflowofficial@gmail.com</div></div>
+    <div class="contact-item"><i class="fa-brands fa-whatsapp"></i><div><small>WhatsApp</small>+966 50 299 1564</div></div>
+    <div class="contact-item"><i class="fa-solid fa-location-dot"></i><div><small>Location</small>Dammam, Saudi Arabia</div></div>
    </div>
-   <form class="form" onsubmit="event.preventDefault();alert('Demo form — connect this to Formspree, your backend or email service later.');">
-    <input required placeholder="Your Name"><input required type="email" placeholder="Your Email"><input placeholder="Company / Business"><textarea required placeholder="What would you like to automate?"></textarea><button class="btn primary" type="submit">Send Inquiry <i class="fa-solid fa-paper-plane"></i></button>
+   <form class="form" id="contactForm">
+    <input required placeholder="Your Name" id="cf-name">
+    <input required type="email" placeholder="Your Email" id="cf-email">
+    <input placeholder="Company / Business" id="cf-company">
+    <textarea required placeholder="What would you like to automate?" id="cf-message"></textarea>
+    <button class="btn primary" type="submit">Send Inquiry <i class="fa-solid fa-paper-plane"></i></button>
    </form>
   </div>
  </div>
@@ -470,6 +474,50 @@ function typeLoop(){
   setTimeout(typeLoop, deleting ? 45 : 95);
 }
 typeLoop();
+
+(function () {
+  // Formspree endpoint for email delivery.
+  // Create a free form at https://formspree.io using rakibflowofficial@gmail.com
+  // and replace YOUR_FORM_ID below with the ID it gives you.
+  const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
+  const WHATSAPP_NUMBER = "966502991564";
+  const contactForm = document.getElementById("contactForm");
+  if (!contactForm) return;
+
+  contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const name = document.getElementById("cf-name").value.trim();
+    const email = document.getElementById("cf-email").value.trim();
+    const company = document.getElementById("cf-company").value.trim();
+    const message = document.getElementById("cf-message").value.trim();
+
+    const waText = encodeURIComponent(
+      `Hi, I'm ${name}.\n` +
+      (company ? `Company: ${company}\n` : "") +
+      `Email: ${email}\n\n` +
+      `I'd like to automate: ${message}`
+    );
+    const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${waText}`;
+
+    try {
+      if (!FORMSPREE_ENDPOINT.includes("YOUR_FORM_ID")) {
+        await fetch(FORMSPREE_ENDPOINT, {
+          method: "POST",
+          headers: { "Accept": "application/json" },
+          body: new FormData(contactForm)
+        });
+      }
+    } catch (err) {
+      console.warn("Email send failed, continuing to WhatsApp:", err);
+    }
+
+    window.open(waLink, "_blank");
+    alert("Thanks! Opening WhatsApp so you can send your message directly.");
+    contactForm.reset();
+  });
+})();
 </script>
 </body>
 </html>
